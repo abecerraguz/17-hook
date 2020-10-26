@@ -1,38 +1,58 @@
-import React, { useState } from 'react'
-import Form from './components/Form'
+import React, { useState, useEffect } from 'react'
+
+/*
+Vamos a hablar sobre el segundo Hook que más se va a utilizar en React este Hook 
+vamos a importarlo aquí en React useEffect y para que se entienda este Hook es 
+para emular el ciclo de vida que teníamos en las clases.
+
+    componentDidMount
+    componentDidUpdate
+    componentWillUnmount
+
+useEffect es un función por lo que reciebe un callBack
+
+ useEffect(() => {
+
+     // componentDidMount 
+     // Lo primero que reciebe es un componenDidmount o sea monta el componente 
+     console.log('MOUNTED')
+
+     // componentDidUpdate
+     // Lo segundo que recibe es componentDidUpdate este permite actualizar el montaje del componente  
+     const time = setInterval(() => setDate(new Date().toLocaleTimeString()), 1000)
+     
+     //componentWillUnmount
+     // El tercer es el desmontaje del componente este lo limpia cada ves que se ejecuta lo que permite que se actualice el reloj.
+     
+     return () => {
+        clearInterval(time)
+     }
+
+ });
+
+
+
+*/
+
+
 
 const App = () => {
-    
-    // const [number, setNumber] = useState(10)
-    // const [text, setText] = useState('')
+    const [date, setDate] = useState(new Date().toLocaleTimeString())
 
-    // const handleIncrement = () => {
-    //     setNumber(number + 1)
-    // }
 
-    // const handleDecrement = () => {
-    //     setNumber(number - 1)
-    // }
-
-    // const handleReset = () => {
-    //     setNumber(0)
-    // }
-
-    // const handleInput = (e) => {
-    //     setText(e.target.value)
-    // }
-
+    useEffect(() => {
+        //componentDidMount
+        console.log('MOUNTED')
+        //componentDidUpdate
+        const time = setInterval(() => setDate(new Date().toLocaleTimeString()), 1000)
+        //componentWillUnmount
+        return () => {
+            clearInterval(time)
+        }
+    })
 
     return (
-        <>
-            {/* <h1>Number: {number}</h1>
-            <button onClick={handleIncrement}>Increment</button>
-            <button onClick={handleDecrement}>Decrement</button>
-            <button onClick={handleReset}>Reset</button>
-            <p>Contenido del input {text}</p>
-            <input type="text" onChange={handleInput} /> */}
-            <Form />
-        </>
+        <h1>{date}</h1>
     );
 }
 

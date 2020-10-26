@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Form = () => {
-    //Se crea un estdo que contiene un objeto
+
     const [values, setValues] = useState({
         name: '',
         email: ''
@@ -9,7 +9,6 @@ const Form = () => {
 
     const handleChange = (e) => {
         setValues({
-            // Uso de String Operator que sirve cuando hay mas de un campo
             ...values,
             [e.target.name]: e.target.value
         })
