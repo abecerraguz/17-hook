@@ -1,42 +1,36 @@
 import React, { useState } from 'react'
 
-// Si no llega la defaultProps por defecto entonces se mostrara 23
-const App = ({ initialNumber = 23 }) => {
-
-    // state = { number: 10 }
-    // const state = useState(0)
-    // const number = state[0]
-    // [state, ()setState]
-    
-    // Pero Ojo prevalece 10
-    const [number = initialNumber, setNumber] = useState(10)
+const App = () => {
+    const [number, setNumber] = useState(10)
+    //USE STATE CON STRING
+    const [text, setText] = useState('')
 
     const handleIncrement = () => {
-        // this.setState({
-        //     number: this.state.number + 1
-        // })
         setNumber(number + 1)
     }
 
     const handleDecrement = () => {
-        // this.setState({
-        //     number: this.state.number - 1
-        // })
         setNumber(number - 1)
     }
 
     const handleReset = () => {
-        // this.setState({
-        //     number: 0
-        // })
         setNumber(0)
     }
+    /* USE STATE CON STRING */
+    const handleInput = (e) => {
+        setText(e.target.value)
+    }
+
+
     return (
         <>
             <h1>Number: {number}</h1>
             <button onClick={handleIncrement}>Increment</button>
             <button onClick={handleDecrement}>Decrement</button>
             <button onClick={handleReset}>Reset</button>
+             {/* USE STATE CON STRING */}
+            <p>Contenido del input {text}</p>
+            <input type="text" onChange={handleInput} />
         </>
     );
 }
